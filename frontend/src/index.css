@@ -1,0 +1,102 @@
+/* ==========================================
+   MELE MARKETPLACE - Global Styles
+   Cork Board Theme | Dark & Beige
+   ========================================== */
+
+:root {
+  --black: #0a0a0a;
+  --dark: #111111;
+  --beige: #e8d5b0;
+  --beige-light: #f2e8d0;
+  --beige-muted: #c4a97a;
+  --cork: #c4854a;
+  --cork-light: #d4956a;
+  --cork-dark: #a06830;
+  --red-accent: #cc2222;
+  --paper-white: #faf6ee;
+  --paper-yellow: #fef9e4;
+  --paper-blue: #eef4fb;
+  --paper-pink: #fef0f0;
+  --shadow-pin: rgba(0, 0, 0, 0.5);
+  --metal-border: linear-gradient(135deg, #888 0%, #ccc 30%, #999 50%, #bbb 70%, #777 100%);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+  background-color: var(--black);
+  color: var(--beige);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--dark);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--cork-dark);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--cork);
+}
+
+/* Buttons base */
+button {
+  cursor: pointer;
+  font-family: 'Lato', sans-serif;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pinDrop {
+  0% {
+    transform: translateY(-10px) scale(1.1);
+    opacity: 0;
+  }
+  60% {
+    transform: translateY(2px) scale(0.97);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.4s ease forwards;
+}

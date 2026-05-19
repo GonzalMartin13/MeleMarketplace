@@ -1,0 +1,240 @@
+.wrapper {
+  position: relative;
+  transform: rotate(var(--tilt));
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+              filter 0.25s ease,
+              z-index 0s;
+  transform-origin: top center;
+  z-index: 1;
+  animation: pinDrop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.wrapperHovered {
+  transform: rotate(0deg) translateY(-8px) scale(1.03);
+  filter: drop-shadow(0 12px 24px rgba(0,0,0,0.5));
+  z-index: 10;
+}
+
+/* Pin */
+.pin {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pinHead {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  box-shadow: inset -2px -2px 4px rgba(0,0,0,0.4), inset 2px 2px 4px rgba(255,255,255,0.3);
+}
+
+.pinNeedle {
+  width: 2px;
+  height: 10px;
+  background: linear-gradient(to bottom, #bbb, #777);
+}
+
+.pinRed .pinHead {
+  background: radial-gradient(circle at 35% 35%, #ff6655, #aa1100);
+}
+
+.pinBlue .pinHead {
+  background: radial-gradient(circle at 35% 35%, #6688ff, #2233aa);
+}
+
+/* Card */
+.card {
+  border-radius: 2px;
+  padding: 1.1rem 1rem 0.8rem;
+  position: relative;
+  box-shadow:
+    2px 2px 6px rgba(0,0,0,0.25),
+    4px 4px 16px rgba(0,0,0,0.2);
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  overflow: hidden;
+}
+
+/* Paper colors */
+.paperWhite { background: #faf6ee; }
+.paperYellow { background: #fef9e4; }
+.paperBlue  { background: #eef4fb; }
+.paperPink  { background: #fef0f0; }
+
+/* Badge */
+.badge {
+  display: inline-block;
+  font-size: 0.6rem;
+  font-weight: 900;
+  letter-spacing: 0.15em;
+  padding: 0.15rem 0.5rem;
+  border-radius: 1px;
+  align-self: flex-start;
+  margin-bottom: 0.2rem;
+}
+
+.badgeVendo {
+  background: #c4522a;
+  color: #fff;
+}
+
+.badgeCompro {
+  background: #2a5caa;
+  color: #fff;
+}
+
+/* Title */
+.title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1a1008;
+  line-height: 1.3;
+  word-break: break-word;
+}
+
+/* Image */
+.imageWrapper {
+  width: 100%;
+  height: 130px;
+  overflow: hidden;
+  border-radius: 1px;
+  margin: 0.2rem 0;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Description */
+.description {
+  font-size: 0.8rem;
+  color: #3a3020;
+  line-height: 1.5;
+  font-family: 'Lato', sans-serif;
+  word-break: break-word;
+  flex: 1;
+}
+
+/* Torn edge effect */
+.tornEdge {
+  height: 8px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='8'%3E%3Cpath d='M0,4 Q5,0 10,4 Q15,8 20,4 Q25,0 30,4 Q35,8 40,4 Q45,0 50,4 Q55,8 60,4 Q65,0 70,4 Q75,8 80,4 Q85,0 90,4 Q95,8 100,4 Q105,0 110,4 Q115,8 120,4' fill='none' stroke='rgba(0,0,0,0.08)' stroke-width='1'/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  margin: 0.3rem -1rem 0;
+  opacity: 0.7;
+}
+
+/* Footer */
+.footer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding-top: 0.3rem;
+}
+
+.authorInfo {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.authorName {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #5a4a30;
+  font-family: 'Lato', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.contactBtn {
+  background: #1a1008;
+  color: #e8d5b0;
+  border: none;
+  padding: 0.3rem 0.7rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 1px;
+  transition: all 0.15s;
+  font-family: 'Lato', sans-serif;
+}
+
+.contactBtn:hover {
+  background: #c4854a;
+}
+
+.contactInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  flex: 1;
+}
+
+.contactItem {
+  font-size: 0.72rem;
+  color: #3a3020;
+  font-family: 'Lato', sans-serif;
+  text-decoration: none;
+  word-break: break-all;
+}
+
+.contactItem:hover {
+  color: #c4522a;
+}
+
+.deleteBtn {
+  background: transparent;
+  border: 1px solid #c4522a;
+  color: #c4522a;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  font-size: 0.7rem;
+  cursor: pointer;
+  transition: all 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.deleteBtn:hover {
+  background: #c4522a;
+  color: #fff;
+}
+
+@keyframes pinDrop {
+  0% {
+    opacity: 0;
+    transform: rotate(var(--tilt)) translateY(-20px);
+  }
+  60% {
+    transform: rotate(var(--tilt)) translateY(3px);
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(var(--tilt)) translateY(0);
+  }
+}

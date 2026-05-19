@@ -1,0 +1,162 @@
+.page {
+  min-height: calc(100vh - 128px);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  background: #0a0a0a;
+  padding: 3rem 1.5rem;
+}
+
+.card {
+  background: #faf6ee;
+  padding: 2.5rem 2rem 2rem;
+  max-width: 440px;
+  width: 100%;
+  position: relative;
+  box-shadow:
+    4px 4px 24px rgba(0,0,0,0.5);
+  transform: rotate(0.5deg);
+}
+
+.pin {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pinHead {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #6688ff, #2233aa);
+  box-shadow: inset -2px -2px 4px rgba(0,0,0,0.4), inset 2px 2px 4px rgba(255,255,255,0.3);
+}
+
+.pinNeedle {
+  width: 2px;
+  height: 12px;
+  background: linear-gradient(to bottom, #bbb, #777);
+}
+
+.backBtn {
+  background: transparent;
+  border: none;
+  color: #c4854a;
+  font-size: 0.8rem;
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 1.2rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.backBtn:hover { color: #1a1008; }
+
+.title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #1a1008;
+  margin-bottom: 1rem;
+}
+
+.avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  margin-bottom: 1.2rem;
+  border: 3px solid #c4854a;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #c4854a;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-family: 'Lato', sans-serif;
+}
+
+.input {
+  background: rgba(255,255,255,0.8);
+  border: 1px solid #d4c4a0;
+  color: #1a1008;
+  padding: 0.6rem 0.8rem;
+  font-size: 0.9rem;
+  font-family: 'Lato', sans-serif;
+  outline: none;
+  transition: border-color 0.15s;
+  border-radius: 1px;
+  width: 100%;
+}
+
+.input:focus {
+  border-color: #c4854a;
+}
+
+.hint {
+  font-size: 0.7rem;
+  color: #9a8a70;
+  font-family: 'Lato', sans-serif;
+  font-style: italic;
+}
+
+.error {
+  background: rgba(196, 82, 42, 0.1);
+  border: 1px solid #c4522a;
+  color: #c4522a;
+  padding: 0.5rem;
+  font-size: 0.8rem;
+  font-family: 'Lato', sans-serif;
+}
+
+.successMsg {
+  color: #2a7a2a;
+  font-size: 0.85rem;
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+}
+
+.saveBtn {
+  background: #1a1008;
+  border: none;
+  color: #e8d5b0;
+  padding: 0.75rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  font-family: 'Lato', sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-top: 0.5rem;
+}
+
+.saveBtn:hover:not(:disabled) {
+  background: #c4854a;
+}
+
+.saveBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

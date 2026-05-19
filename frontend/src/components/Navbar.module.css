@@ -1,0 +1,245 @@
+.navbar {
+  background: #0a0a0a;
+  border-bottom: 1px solid #2a2a2a;
+  padding: 0 1.5rem;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  gap: 1rem;
+}
+
+.logo {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.logoText {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: #e8d5b0;
+  letter-spacing: 0.02em;
+}
+
+.logoSub {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.55rem;
+  font-weight: 300;
+  color: #c4a97a;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+}
+
+.filters {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.filterBtn {
+  background: transparent;
+  border: 1px solid #333;
+  color: #c4a97a;
+  padding: 0.4rem 1rem;
+  border-radius: 2px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: all 0.2s;
+}
+
+.filterBtn:hover {
+  border-color: #c4a97a;
+  color: #e8d5b0;
+  background: rgba(196, 169, 122, 0.08);
+}
+
+.filterBtn.active {
+  background: #c4a97a;
+  border-color: #c4a97a;
+  color: #0a0a0a;
+}
+
+.filterBtn.vendo.active {
+  background: #c4522a;
+  border-color: #c4522a;
+  color: #fff;
+}
+
+.filterBtn.compro.active {
+  background: #2a6cc4;
+  border-color: #2a6cc4;
+  color: #fff;
+}
+
+.publishBtn {
+  background: #c4522a;
+  border: none;
+  color: #fff;
+  padding: 0.45rem 1.2rem;
+  border-radius: 2px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-left: 0.5rem;
+}
+
+.publishBtn:hover {
+  background: #d4623a;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(196, 82, 42, 0.4);
+}
+
+.publishBtn span {
+  font-size: 1.1rem;
+  font-weight: 300;
+}
+
+.userArea {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.userBtn {
+  background: transparent;
+  border: 1px solid #333;
+  color: #e8d5b0;
+  padding: 0.35rem 0.8rem;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 0.85rem;
+}
+
+.userBtn:hover {
+  border-color: #c4a97a;
+}
+
+.avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.avatarFallback {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #c4854a;
+  color: #0a0a0a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.userName {
+  font-weight: 700;
+  color: #e8d5b0;
+}
+
+.chevron {
+  font-size: 0.6rem;
+  color: #c4a97a;
+}
+
+.dropdown {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 8px);
+  background: #1a1a1a;
+  border: 1px solid #333;
+  min-width: 160px;
+  z-index: 200;
+  animation: fadeInUp 0.15s ease;
+}
+
+.dropdown button {
+  display: block;
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: #e8d5b0;
+  padding: 0.7rem 1rem;
+  text-align: left;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.dropdown button:hover {
+  background: #2a2a2a;
+}
+
+/* ── MOBILE ── */
+@media (max-width: 600px) {
+  .navbar {
+    height: auto;
+    padding: 0.6rem 0.8rem;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .logo {
+    flex: 1;
+  }
+
+  .logoText {
+    font-size: 1.1rem;
+  }
+
+  /* Filters row ocupa toda la línea debajo */
+  .filters {
+    order: 3;
+    width: 100%;
+    justify-content: space-between;
+    gap: 0.3rem;
+  }
+
+  .filterBtn {
+    flex: 1;
+    font-size: 0.7rem;
+    padding: 0.35rem 0.3rem;
+    text-align: center;
+    letter-spacing: 0;
+  }
+
+  .publishBtn {
+    flex: 1;
+    font-size: 0.7rem;
+    padding: 0.35rem 0.3rem;
+    margin-left: 0;
+    justify-content: center;
+    letter-spacing: 0;
+  }
+
+  .publishBtn span {
+    font-size: 0.9rem;
+  }
+
+  .userName {
+    display: none;
+  }
+
+  .userBtn {
+    padding: 0.35rem 0.5rem;
+  }
+}
