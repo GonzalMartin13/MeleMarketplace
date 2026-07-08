@@ -14,6 +14,7 @@ Marketplace interno de empleados con tablero de corcho.
 3. Habilitá el proveedor de Google:
    - En Supabase: **Authentication → Providers → Google**
    - Necesitás un **Client ID** y **Client Secret** de Google OAuth
+   --------------------------------------------------------------
    - Para obtenerlos: [console.cloud.google.com](https://console.cloud.google.com) → Credenciales → OAuth 2.0
    - En "Authorized redirect URIs" poné: `https://tu-proyecto.supabase.co/auth/v1/callback`
 
@@ -21,6 +22,7 @@ Marketplace interno de empleados con tablero de corcho.
    - **Project URL** → `SUPABASE_URL` y `VITE_SUPABASE_URL`
    - **anon key** → `VITE_SUPABASE_ANON_KEY`
    - **service_role key** → `SUPABASE_SERVICE_ROLE_KEY` (solo en backend, nunca en frontend)
+   SAPE!
 
 ---
 
