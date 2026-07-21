@@ -2,19 +2,17 @@ import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext.jsx';
 import { api } from '../lib/api.js';
 import styles from './PostCard.module.css';
-const { user, profile } = useAuth();
 
-// Deterministic tilt and paper color from post id
 function getCardStyle(id) {
   const code = id ? id.charCodeAt(0) + id.charCodeAt(id.length - 1) : 0;
-  const tilt = ((code % 7) - 3) * 0.8; // -2.4 to +2.4 degrees
+  const tilt = ((code % 7) - 3) * 0.8;
   const papers = [styles.paperWhite, styles.paperYellow, styles.paperBlue, styles.paperPink];
   const paper = papers[code % papers.length];
   return { tilt, paper };
 }
 
 export default function PostCard({ post, onDeleted }) {
-  const { user } = useAuth();
+  const { user, profile } = useAuth();
   const [showContact, setShowContact] = useState(false);
   const [deleting, setDeleting] = useState(false);
   const [hovered, setHovered] = useState(false);
@@ -42,23 +40,18 @@ export default function PostCard({ post, onDeleted }) {
       onMouseLeave={() => setHovered(false)}
       style={{ '--tilt': `${tilt}deg` }}
     >
-      {/* Pin */}
       <div className={`${styles.pin} ${isVendo ? styles.pinRed : styles.pinBlue}`}>
         <div className={styles.pinHead} />
         <div className={styles.pinNeedle} />
       </div>
 
-      {/* Paper card */}
       <div className={`${styles.card} ${paper}`}>
-        {/* Type badge */}
         <div className={`${styles.badge} ${isVendo ? styles.badgeVendo : styles.badgeCompro}`}>
           {isVendo ? 'VENDO' : 'COMPRO'}
         </div>
 
-        {/* Title */}
         <h3 className={styles.title}>{post.title}</h3>
 
-        {/* Image (only for vendo) */}
         {isVendo && post.image_url && (
           <div className={styles.imageWrapper}>
             <img
@@ -70,13 +63,10 @@ export default function PostCard({ post, onDeleted }) {
           </div>
         )}
 
-        {/* Description */}
         <p className={styles.description}>{post.description}</p>
 
-        {/* Torn edge effect */}
         <div className={styles.tornEdge} />
 
-        {/* Contact section */}
         <div className={styles.footer}>
           <div className={styles.authorInfo}>
             <span className={styles.authorName}>
@@ -95,7 +85,7 @@ export default function PostCard({ post, onDeleted }) {
             ) : (
               <div className={styles.contactInfo}>
                 {post.profiles?.phone && (
-                  <a
+                  
                     href={`https://wa.me/54${post.profiles.phone.replace(/\D/g, '')}`}
                     target="_blank"
                     rel="noreferrer"
