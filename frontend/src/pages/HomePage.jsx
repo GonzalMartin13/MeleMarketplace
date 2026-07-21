@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import Navbar from '../components/Navbar.jsx';
 import PostCard from '../components/PostCard.jsx';
 import { api } from '../lib/api.js';
-import { supabase } from '../lib/supabase.js';
+// import { supabase } from '../lib/supabase.js';
 import styles from './HomePage.module.css';
 
 export default function HomePage() {
@@ -29,7 +29,7 @@ export default function HomePage() {
   }, [fetchPosts]);
 
   // Realtime - escucha cambios en la tabla posts
-  useEffect(() => {
+/*   useEffect(() => {
     const channel = supabase
       .channel('posts-realtime')
       .on(
@@ -45,7 +45,7 @@ export default function HomePage() {
     return () => {
       supabase.removeChannel(channel);
     };
-  }, [fetchPosts]);
+  }, [fetchPosts]); */
 
   function handleDeleted(id) {
     setPosts(prev => prev.filter(p => p.id !== id));
