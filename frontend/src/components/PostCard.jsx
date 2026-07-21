@@ -3,8 +3,6 @@ import { useAuth } from '../context/AuthContext.jsx';
 import { api } from '../lib/api.js';
 import styles from './PostCard.module.css';
 
-const { user, profile } = useAuth();
-
 function getCardStyle(id) {
   const code = id ? id.charCodeAt(0) + id.charCodeAt(id.length - 1) : 0;
   const tilt = ((code % 7) - 3) * 0.8;
@@ -20,11 +18,12 @@ export default function PostCard({ post, onDeleted }) {
   const [hovered, setHovered] = useState(false);
 
   const isOwner = user?.id === post.user_id || profile?.is_admin === true;
-  console.log('profile:', profile);
-console.log('is_admin:', profile?.is_admin);
-console.log('isOwner:', isOwner);
   const isVendo = post.type === 'vendo';
   const { tilt, paper } = getCardStyle(post.id);
+
+  console.log('profile:', profile);
+  console.log('is_admin:', profile?.is_admin);
+  console.log('isOwner:', isOwner);
 
   async function handleDelete() {
     if (!window.confirm('¿Eliminás esta publicación?')) return;
