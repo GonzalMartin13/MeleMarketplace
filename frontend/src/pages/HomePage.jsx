@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import Navbar from '../components/Navbar.jsx';
 import PostCard from '../components/PostCard.jsx';
 import { api } from '../lib/api.js';
+import { supabase } from '../lib/supabase.js';
 import styles from './HomePage.module.css';
 
 export default function HomePage() {
@@ -27,10 +28,23 @@ export default function HomePage() {
     fetchPosts();
   }, [fetchPosts]);
 
+  // Realtime - escucha cambios en la tabla posts
   useEffect(() => {
-    const handler = () => fetchPosts();
-    window.addEventListener('post-created', handler);
-    return () => window.removeEventListener('post-created', handler);
+    const channel = supabase
+      .channel('posts-realtime')
+      .on(
+        'postgres_changes',
+        { event: '*', schema: 'public', table: 'posts' },
+        () => {
+          // Cada vez que alguien publica o elimina, recarga los posts
+          fetchPosts();
+        }
+      )
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(channel);
+    };
   }, [fetchPosts]);
 
   function handleDeleted(id) {

@@ -1,6 +1,6 @@
 {
   "name": "Mele Marketplace",
-  "short_name": "Mele",
+  "short_name": "Mele Market",
   "description": "Marketplace interno de empleados",
   "start_url": "/",
   "display": "standalone",

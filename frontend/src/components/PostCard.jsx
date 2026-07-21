@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext.jsx';
 import { api } from '../lib/api.js';
 import styles from './PostCard.module.css';
+const { user, profile } = useAuth();
 
 // Deterministic tilt and paper color from post id
 function getCardStyle(id) {
@@ -18,7 +19,7 @@ export default function PostCard({ post, onDeleted }) {
   const [deleting, setDeleting] = useState(false);
   const [hovered, setHovered] = useState(false);
 
-  const isOwner = user?.id === post.user_id;
+  const isOwner = user?.id === post.user_id || profile?.is_admin === true;
   const isVendo = post.type === 'vendo';
   const { tilt, paper } = getCardStyle(post.id);
 
