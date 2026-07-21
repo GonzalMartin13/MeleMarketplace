@@ -10,7 +10,6 @@ export function AuthProvider({ children }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Get initial session
     supabase.auth.getSession().then(({ data: { session } }) => {
       setUser(session?.user ?? null);
       if (session?.user) {
@@ -20,7 +19,6 @@ export function AuthProvider({ children }) {
       }
     });
 
-    // Listen for auth changes
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
       async (event, session) => {
         setUser(session?.user ?? null);
@@ -38,19 +36,26 @@ export function AuthProvider({ children }) {
 
   async function loadProfile(user) {
     try {
-      // Try to get or create profile
-      let profileData = await api.getProfile(user.id);
-      if (!profileData) {
-        // Auto-create from Google data
-        profileData = await api.upsertProfile({
+      // Leer directo de Supabase para asegurarnos de tener is_admin
+      const { data, error } = await supabase
+        .from('profiles')
+        .select('*')
+        .eq('user_id', user.id)
+        .single();
+
+      if (error || !data) {
+        // Si no existe, crearlo via API
+        const profileData = await api.upsertProfile({
           user_id: user.id,
           name: user.user_metadata?.full_name || user.user_metadata?.name || user.email.split('@')[0],
           email: user.email,
           avatar_url: user.user_metadata?.avatar_url || null,
           phone: null
         });
+        setProfile(profileData);
+      } else {
+        setProfile(data);
       }
-      setProfile(profileData);
     } catch (err) {
       console.error('Error loading profile:', err);
     } finally {
@@ -61,9 +66,7 @@ export function AuthProvider({ children }) {
   async function signInWithGoogle() {
     const { error } = await supabase.auth.signInWithOAuth({
       provider: 'google',
-      options: {
-        redirectTo: window.location.origin
-      }
+      options: { redirectTo: window.location.origin }
     });
     if (error) throw error;
   }
