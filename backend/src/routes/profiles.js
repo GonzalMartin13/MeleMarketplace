@@ -3,13 +3,13 @@ import { supabase } from '../supabase.js';
 
 const router = express.Router();
 
-// GET /api/profiles/:user_id - Get a user's profile
+// GET /api/profiles/:user_id
 router.get('/:user_id', async (req, res) => {
   try {
     const { user_id } = req.params;
     const { data, error } = await supabase
       .from('profiles')
-      .select('*')
+      .select('*, is_admin')
       .eq('user_id', user_id)
       .single();
 
@@ -21,7 +21,7 @@ router.get('/:user_id', async (req, res) => {
   }
 });
 
-// POST /api/profiles - Create or update profile (upsert)
+// POST /api/profiles - upsert
 router.post('/', async (req, res) => {
   try {
     const { user_id, name, phone, email, avatar_url } = req.body;
@@ -49,7 +49,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-// PUT /api/profiles/:user_id - Update profile fields
+// PUT /api/profiles/:user_id
 router.put('/:user_id', async (req, res) => {
   try {
     const { user_id } = req.params;

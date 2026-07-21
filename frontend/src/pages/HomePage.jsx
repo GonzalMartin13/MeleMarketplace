@@ -28,6 +28,15 @@ export default function HomePage() {
     fetchPosts();
   }, [fetchPosts]);
 
+  // Polling - refresca cada 10 segundos
+useEffect(() => {
+  const interval = setInterval(() => {
+    fetchPosts();
+  }, 10000);
+
+  return () => clearInterval(interval);
+}, [fetchPosts]);
+
   // Realtime - escucha cambios en la tabla posts
 /*   useEffect(() => {
     const channel = supabase
