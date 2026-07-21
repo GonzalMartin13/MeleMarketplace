@@ -20,6 +20,9 @@ export default function PostCard({ post, onDeleted }) {
   const [hovered, setHovered] = useState(false);
 
   const isOwner = user?.id === post.user_id || profile?.is_admin === true;
+  console.log('profile:', profile);
+console.log('is_admin:', profile?.is_admin);
+console.log('isOwner:', isOwner);
   const isVendo = post.type === 'vendo';
   const { tilt, paper } = getCardStyle(post.id);
 
